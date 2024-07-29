@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+</head>
+<style>
+label{
+  width:40px;
+  height:40px;
+}
+text{
+  padding-left:20px;
+  padding-top:20px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+}
+
+/* .centered-div {
+    padding: 20px;
+    background-color: lightblue;
+} */
+button{
+  width:100px;
+  height:30px;
+}
+p{
+  padding-left:0px;
+  font-size:40px;
+}
+
+</style>
+<body>
+<label>SCORE<label><text id="runs">0</text>
+<div class="container">
+    <div class="centered-div">
+      <p id="score"></p>
+        <button id="play">PLAY</button>
+	<p id="final"></p>
+    </div>
+</div>
+<script>
+var pl=document.getElementById("play")
+var scr=document.getElementById("score")
+var sum=0
+var run=document.getElementById("runs")
+function generate(){
+  var min=0
+var max=8
+var randomNum=Math.floor(Math.random()*(max-min+1))+min
+if(randomNum==0){
+   document.getElementById("score").innerHTML="OUT"
+document.getElementById("final").innerHTML="Your Score "+sum
+setTimeout(redir, 3000);
+}else if(randomNum%2==0){
+      document.getElementById("score").innerHTML=randomNum
+  sum=sum+randomNum;
+  document.getElementById("runs").innerHTML=sum
+}else{
+  generate();
+}
+}
+function redir(){
+	window.location="result.html";
+}
+pl.addEventListener('click',generate)
+</script>
+</body>
+</html>
